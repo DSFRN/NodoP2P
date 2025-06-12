@@ -13,7 +13,7 @@ all:
 
 compile:
 	@ mkdir -p $(BEAM_DIR) ;\
-	  erlc -o $(BEAM_DIR) $(SRC)
+		erlc -o $(BEAM_DIR) $(SRC)
 
 move_dumps:
 	@ mkdir -p $(DUMP_DIR) ;\
