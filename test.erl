@@ -1,6 +1,6 @@
 -module(test).
 -export([main/0]).
-
+ 
 main() ->
   [ID, Host] = string:split(io_lib:format("~s",[node()]), "@"),
   case ID of
