@@ -6,6 +6,8 @@ DUMP_DIR = ./dumps/
 START_SERVER = -run nodo start_server
 NAME = -sname nodo_18
 
+.PHONY: all compile move_dumps
+
 all:
 	@ ./bin/run.sh
 
