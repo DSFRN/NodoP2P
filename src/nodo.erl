@@ -1,13 +1,13 @@
 -module(nodo).
 -export([start_server/0, server/1, listen/1]).
--export([start_client/0]).
+-export([client/0]).
 -define(Puerto, 12345).
 -define(Dir, "localhost").
 
 start_server() ->
   {ok, Socket} = gen_tcp:listen(?Puerto, [{active, false}]),
   io:format("   SERVER IS UP!~n"),
-  spawn(?MODULE, server, [Socket]).
+ server(Socket).
 
 server(Socket) ->
   case gen_tcp:accept(Socket) of
@@ -48,7 +48,7 @@ listen(CSocket) ->
 
 %-----------------------------------------------------------------------------------%
 
-start_client() ->
+client() ->
   case gen_tcp:connect(?Dir, ?Puerto, [{active, false}]) of
     {ok, Socket} ->
       io:format("   CONNECTED | Enviar al server: "),
