@@ -18,3 +18,7 @@ compile:
 move_dumps:
 	@ mkdir -p $(DUMP_DIR) ;\
 		find . -name '*.dump' ! -path "$(DUMP_DIR)*" -exec mv {} $(DUMP_DIR) \;
+
+clean:
+	@ rm -f $(DUMP_DIR)*.dump
+	@ rm -f $(BEAM_DIR)*.beam
