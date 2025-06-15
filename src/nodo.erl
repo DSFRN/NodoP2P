@@ -1,12 +1,12 @@
 -module(nodo).
 -export([start_server/0, server/1, listen/1, manager/2]).
 -export([client/1, connect/0, shared/0, get_info/0]).
--define(Puerto, 12345).
+-define(Port, 12345).
 -define(Dir, "localhost").
 
 
 start_server() ->
-  {ok, Socket} = gen_tcp:listen(?Puerto, [{packet, 0}, {active, false}, {reuseaddr, true}]),
+  {ok, Socket} = gen_tcp:listen(?Port, [{packet, 0}, {active, false}, {reuseaddr, true}]),
   io:format(" SERVER IS UP!~n"),
   server(Socket).
 
@@ -36,11 +36,11 @@ listen(CSocket) ->
       end;
 
     {error, closed} ->
-      io:format(" LISTEN_ERROR: conexión cerrada.\n"),
+      io:format("\n LISTEN_ERROR: conexión cerrada.\n"),
       gen_tcp:close(CSocket);
 
     {error, Reason} ->
-      Error = " LISTEN_ERROR: " ++ atom_to_list(Reason) ++ "\n",
+      Error = "\n LISTEN_ERROR: " ++ atom_to_list(Reason) ++ "\n",
       io:format(Error),
       gen_tcp:close(CSocket)
   end.
@@ -67,13 +67,13 @@ manager(Packet, CSocket) ->
           gen_tcp:send(CSocket, Reason)
       end;
 
-     _ -> gen_tcp:send(CSocket, "No te entiendo, trata de vuelta.")
+     _ -> gen_tcp:send(CSocket, "No te entiendo, trata de vuelta.\n")
 
   end.
 
 
 shared() ->
-  file:list_dir_all("/home/frn_ds/SO1/NodoP2P/shared").
+  file:list_dir_all("./shared").
 
 
 get_info() ->
@@ -92,7 +92,7 @@ get_info() ->
 %-----------------------------------------------------------------------------------%
 
 connect() ->
-  case gen_tcp:connect(?Dir, ?Puerto, [{active, false}]) of
+  case gen_tcp:connect(?Dir, ?Port, [{active, false}]) of
     {ok, CSocket} ->
       client(CSocket);
     {error, Reason} ->
@@ -118,3 +118,4 @@ client(CSocket) ->
        io:format(" RECV_ERROR: ~p.~n", [Reason]),
        gen_tcp:close(CSocket)
   end.
+
