@@ -5,7 +5,7 @@ Trabajo Práctico Final - SO I
 
 ## Instrucciones:
 
-Corre el comando `make` para iniciar el servidor del nodo.
+Corre el comando `make` dentro del directorio para iniciar el servidor del nodo.
 
 Para iniciar un proceso *cliente* puedes correr el comando `nodo:connect().` dentro de la EShell.
 
