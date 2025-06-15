@@ -7,10 +7,9 @@ Trabajo Práctico Final - SO I
 
 Corre el comando `make` para iniciar el servidor del nodo.
 
-Para iniciar un proceso *cliente* puedes correr el siguiente comando dentro de la EShell:
-`nodo:connect().`
+Para iniciar un proceso *cliente* puedes correr el comando `nodo:connect().` dentro de la EShell.
 
-Commandos disponibles como cliente:[^1]
+Commandos disponibles como cliente: [^1]
 - id_nodo - Retorna la ID del nodo servidor al cuál está conectado.
 - listar_archivos - Lista los archivos que el nodo servidor tiene para compartir.
 - salir - Cierra la conexión con el nodo servidor.
